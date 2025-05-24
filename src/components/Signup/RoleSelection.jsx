@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Navigation from "../home/header/Navigation";
-import Footer from "../home/footer/Footer";
-import Signup from "../Signup/Signup";
+import Signup from "./Signup";
 import Login from "../login/Login";
+import Layout from "../Layout";
 import "./RoleSelection.css";
 
 const RoleSelection = () => {
@@ -50,7 +49,7 @@ const RoleSelection = () => {
           </div>
         </div>
 
-        <Footer />
+     
       </div>
 
       {/* Signup Modal */}
