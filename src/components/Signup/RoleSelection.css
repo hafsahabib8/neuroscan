@@ -1,0 +1,167 @@
+/* Page Base Styling */
+.role-selection-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin-top: -100px;
+    width:100%;
+  
+    /* Prevent content hiding behind fixed navbar */
+    padding-top: 80px; /* Adjust if your navbar is taller/shorter */
+  }
+  
+  /* Main Content Container */
+  .role-selection-container {
+    text-align: center;
+    padding: 2rem;
+    margin: 80px;
+  }
+  
+  /* Main Title */
+  .role-selection-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  /* Subtitle Text */
+  .role-selection-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  /* Flex container for cards */
+  .role-card-wrapper-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Upwork-style Card */
+  .role-card.upwork-style {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1.5px solid #b7b5b5;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  /* Card hover effect */
+  .role-card.upwork-style:hover {
+    border-color: #007bff;
+    box-shadow: 0 8px 24px rgba(16, 138, 0, 0.15);
+    transform: translateY(-5px);
+    background-color: #f9fff9;
+  }
+  
+  /* Card Title */
+  .role-card.upwork-style h2 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  /* Card Description */
+  .role-card.upwork-style p {
+    font-size: 15px;
+    color: #444;
+  }
+  footer {
+    width: 100%;
+
+    text-align: center;
+  
+  }
+
+  /* === RESPONSIVE MEDIA QUERIES === */
+
+/* Large tablets / small desktops */
+@media (max-width: 1024px) {
+  .role-selection-title {
+    font-size: 28px;
+  }
+  .role-selection-subtitle {
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .role-card.upwork-style {
+    padding: 1.5rem;
+    min-width: 240px;
+    max-width: 300px;
+  }
+  .role-selection-container {
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .role-selection-page {
+    padding-top: 60px;
+  }
+  .role-selection-title {
+    font-size: 24px;
+  }
+  .role-selection-subtitle {
+    font-size: 13px;
+    margin-bottom: 1rem;
+  }
+  .role-card-wrapper-horizontal {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .role-card.upwork-style {
+    width: 100%;
+    max-width: none;
+    padding: 1.25rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .role-selection-page {
+    padding-top: 50px;
+  }
+  .role-selection-title {
+    font-size: 20px;
+  }
+  .role-selection-subtitle {
+    font-size: 12px;
+    margin-bottom: 0.75rem;
+  }
+  .role-card-wrapper-horizontal {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .role-card.upwork-style {
+    padding: 1rem;
+    min-width: 100%;
+    border-width: 1px;
+  }
+  .role-selection-container {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  footer {
+    font-size: 14px;
+    padding: 1rem 0;
+  }
+}
