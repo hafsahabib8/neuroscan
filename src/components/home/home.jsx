@@ -1,0 +1,453 @@
+// import React, { useState, useEffect } from "react";
+// import "./home.css";
+// import image from "./brain.jpg";
+
+// // ✅ Capitalized component name
+// const Home = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+
+//   useEffect(() => {
+//     const sections = document.querySelectorAll(".fade-in-section");
+//     const options = { threshold: 0.1 };
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           entry.target.classList.add("visible");
+//         }
+//       });
+//     }, options);
+//     sections.forEach((section) => observer.observe(section));
+//     return () => {
+//       sections.forEach((section) => observer.unobserve(section));
+//     };
+//   }, []);
+
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     alert(
+//       `Thanks for reaching out, ${formData.name}! We'll get back to you soon.`
+//     );
+//     setFormData({ name: "", email: "", message: "" });
+//   };
+
+//   return (
+//     <div className="home-container">
+//       {/* Floating background blobs */}
+//       <div className="blob blob1"></div>
+//       <div className="blob blob2"></div>
+
+//       {/* Navigation */}
+//       <nav className="navbar">
+//         <div className="logo">NeuroScan</div>
+//         <ul className="nav-links">
+//           <li>
+//             <a href="#home" className="active">
+//               Home
+//             </a>
+//           </li>
+//           <li>
+//             <a href="#about">About</a>
+//           </li>
+//           <li>
+//             <a href="#contact">Contact</a>
+//           </li>
+//           <li>
+//            <a href="/login"> <button className="btn login-btn">
+//               <svg
+//                 className="icon"
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 strokeWidth="2"
+//               >
+//                 <path d="M15 3h4a2 2 0 0 1 2 2v4" />
+//                 <path d="M10 14L21 3" />
+//                 <path d="M21 21v-6" />
+//               </svg>
+//               Login
+//             </button></a>
+//           </li>
+//           <li>
+//             <button className="btn signup-btn">
+//               <svg
+//                 className="icon"
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 strokeWidth="2"
+//               >
+//                 <path d="M12 5v14M5 12h14" />
+//               </svg>
+//               Sign Up
+//             </button>
+//           </li>
+//         </ul>
+//       </nav>
+
+//       {/* Hero Section */}
+//       <header id="home" className="hero-section fade-in-section">
+//         <div className="hero-text">
+//           <h1>Revolutionizing Brain Image Segmentation</h1>
+//           <p>
+//             Advanced AI-powered tool to detect and segment brain tumors with
+//             precision and ease.
+//           </p>
+//           <button className="btn primary-btn">
+//             Get Started 
+//             <svg
+//               className="icon-arrow"
+//               viewBox="0 0 24 24"
+//               fill="none"
+//               stroke="#fff"
+//               strokeWidth="3"
+//             >
+//               <line x1="5" y1="12" x2="19" y2="12"></line>
+//               <polyline points="12 5 19 12 12 19"></polyline>
+//             </svg>
+//           </button>
+//         </div>
+//         <div className="hero-image">
+//           <img src={image} alt="Brain scan" />
+//         </div>
+//       </header>
+
+//       {/* About Section */}
+//       <section id="about" className="about-section fade-in-section">
+//         <h2>About NeuroScan</h2>
+//         <p>
+//           NeuroScan leverages cutting-edge deep learning models trained on vast
+//           datasets of brain MRI scans to accurately identify and segment tumors.
+//           Designed for neurologists, radiologists, and researchers, our
+//           web-based platform simplifies complex image analysis, enabling faster
+//           diagnosis and treatment planning.
+//         </p>
+//         <div className="features-grid">
+//           <FeatureCard
+//             icon={
+//               <svg
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="#0ebeff"
+//                 strokeWidth="2"
+//               >
+//                 <circle cx="12" cy="12" r="10" />
+//                 <path d="M8 12l2 2 4-4" />
+//               </svg>
+//             }
+//             title="High accuracy segmentation"
+//           />
+//           <FeatureCard
+//             icon={
+//               <svg
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="#0ebeff"
+//                 strokeWidth="2"
+//               >
+//                 <path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />
+//               </svg>
+//             }
+//             title="Interactive 3D visualization"
+//           />
+//           <FeatureCard
+//             icon={
+//               <svg
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="#0ebeff"
+//                 strokeWidth="2"
+//               >
+//                 <path d="M21 16V8a2 2 0 0 0-2-2H7l-4 4v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z" />
+//                 <path d="M3 12h4" />
+//               </svg>
+//             }
+//             title="PACS Integration"
+//           />
+//           <FeatureCard
+//             icon={
+//               <svg
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="#0ebeff"
+//                 strokeWidth="2"
+//               >
+//                 <circle cx="12" cy="12" r="10" />
+//                 <line x1="12" y1="8" x2="12" y2="12" />
+//                 <line x1="12" y1="16" x2="12.01" y2="16" />
+//               </svg>
+//             }
+//             title="User-friendly interface"
+//           />
+//         </div>
+//       </section>
+
+//       {/* Contact Section */}
+//       <section id="contact" className="contact-section fade-in-section">
+//         <h2>Contact Us</h2>
+//         <form onSubmit={handleSubmit} className="contact-form" noValidate>
+//           <label htmlFor="name">Name</label>
+//           <input
+//             type="text"
+//             id="name"
+//             name="name"
+//             placeholder="Your full name"
+//             value={formData.name}
+//             onChange={handleChange}
+//             required
+//           />
+//           <label htmlFor="email">Email</label>
+//           <input
+//             type="email"
+//             id="email"
+//             name="email"
+//             placeholder="your.email@example.com"
+//             value={formData.email}
+//             onChange={handleChange}
+//             required
+//           />
+//           <label htmlFor="message">Message</label>
+//           <textarea
+//             id="message"
+//             name="message"
+//             placeholder="Write your message here..."
+//             value={formData.message}
+//             onChange={handleChange}
+//             rows="5"
+//             required
+//           />
+//           <button type="submit" className="btn primary-btn">
+//             Send Message
+//           </button>
+//         </form>
+//       </section>
+
+//       <footer className="footer">
+//         <p>
+//           © 2025 NeuroScan - Brain Image Segmentation Tool. All rights reserved.
+//         </p>
+//         <p>Built by Hafsa, Malaika and Aqsa.</p>
+//       </footer>
+//     </div>
+//   );
+// };
+
+// // ✅ Capitalized helper component
+// const FeatureCard = ({ icon, title }) => (
+//   <div className="feature-card">
+//     <div className="feature-icon">{icon}</div>
+//     <h3>{title}</h3>
+//   </div>
+// );
+
+// // ✅ Export with correct name
+// export default Home;
+
+import React, { useState, useEffect } from "react";
+import "./home.css";
+import image from "./brain.jpg";
+import Login from "../login/Login"; // ⬅️ Import Login Modal
+
+const Home = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [showLoginModal, setShowLoginModal] = useState(false); // ⬅️ Modal state
+
+  useEffect(() => {
+    const sections = document.querySelectorAll(".fade-in-section");
+    const options = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, options);
+    sections.forEach((section) => observer.observe(section));
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thanks for reaching out, ${formData.name}! We'll get back to you soon.`);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <div className="home-container">
+      {/* Background blobs */}
+      <div className="blob blob1"></div>
+      <div className="blob blob2"></div>
+
+      {/* Navigation */}
+      <nav className="navbar">
+        <div className="logo">NeuroScan</div>
+        <ul className="nav-links">
+          <li><a href="#home" className="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button className="btn login-btn" onClick={() => setShowLoginModal(true)}>
+              <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 3h4a2 2 0 0 1 2 2v4" />
+                <path d="M10 14L21 3" />
+                <path d="M21 21v-6" />
+              </svg>
+              Login
+            </button>
+          </li>
+          <li>
+            <button className="btn signup-btn">
+              <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Sign Up
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Hero Section */}
+      <header id="home" className="hero-section fade-in-section">
+        <div className="hero-text">
+          <h1>Revolutionizing Brain Image Segmentation</h1>
+          <p>
+            Advanced AI-powered tool to detect and segment brain tumors with precision and ease.
+          </p>
+          <button className="btn primary-btn">
+            Get Started
+            <svg className="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+        <div className="hero-image">
+          <img src={image} alt="Brain scan" />
+        </div>
+      </header>
+
+      {/* About Section */}
+      <section id="about" className="about-section fade-in-section">
+        <h2>About NeuroScan</h2>
+        <p>
+          NeuroScan leverages cutting-edge deep learning models trained on vast datasets of brain MRI scans to accurately identify and segment tumors. Designed for neurologists, radiologists, and researchers, our web-based platform simplifies complex image analysis, enabling faster diagnosis and treatment planning.
+        </p>
+        <div className="features-grid">
+          <FeatureCard
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0ebeff" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12l2 2 4-4" />
+              </svg>
+            }
+            title="High accuracy segmentation"
+          />
+          <FeatureCard
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0ebeff" strokeWidth="2">
+                <path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />
+              </svg>
+            }
+            title="Interactive 3D visualization"
+          />
+          <FeatureCard
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0ebeff" strokeWidth="2">
+                <path d="M21 16V8a2 2 0 0 0-2-2H7l-4 4v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z" />
+                <path d="M3 12h4" />
+              </svg>
+            }
+            title="PACS Integration"
+          />
+          <FeatureCard
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0ebeff" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            }
+            title="User-friendly interface"
+          />
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact-section fade-in-section">
+        <h2>Contact Us</h2>
+        <form onSubmit={handleSubmit} className="contact-form" noValidate>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your.email@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            value={formData.message}
+            onChange={handleChange}
+            rows="5"
+            required
+          />
+          <button type="submit" className="btn primary-btn">
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      <footer className="footer">
+        <p>© 2025 NeuroScan - Brain Image Segmentation Tool. All rights reserved.</p>
+        <p>Built by Hafsa, Malaika and Aqsa.</p>
+      </footer>
+
+      {/* ✅ Login Modal */}
+      {showLoginModal && (
+        <Login onClose={() => setShowLoginModal(false)} />
+      )}
+    </div>
+  );
+};
+
+const FeatureCard = ({ icon, title }) => (
+  <div className="feature-card">
+    <div className="feature-icon">{icon}</div>
+    <h3>{title}</h3>
+  </div>
+);
+
+export default Home;
