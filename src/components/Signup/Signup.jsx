@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import supabase from "./supabaseClient"; // Adjust path if needed
 import "./Signup.css";
 
 const Signup = ({ onClose, initialRole = "user", onLoginClick }) => {
@@ -25,7 +26,6 @@ const Signup = ({ onClose, initialRole = "user", onLoginClick }) => {
         onClose();
       }
     };
-
     window.addEventListener("keydown", handleEsc);
     return () => {
       window.removeEventListener("keydown", handleEsc);
@@ -56,7 +56,6 @@ const Signup = ({ onClose, initialRole = "user", onLoginClick }) => {
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -66,12 +65,56 @@ const Signup = ({ onClose, initialRole = "user", onLoginClick }) => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert("Frontend Signup simulation successful! 🚀");
+    setServerError("");
+
+    try {
+      // 1. Create user in Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            role: formData.role,
+          },
+        },
+      });
+
+      if (authError) {
+        setServerError(authError.message);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 2. Add user to the correct table (users or developers)
+      const tableName = formData.role === "developer" ? "developers" : "users";
+      const { error: insertError } = await supabase
+        .from(tableName)
+        .insert([
+          {
+            email: formData.email,
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            // Optionally, store user id if available: user_id: authData.user?.id,
+          },
+        ]);
+
+      if (insertError) {
+        setServerError("Account created, but failed to save profile. Contact support.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 3. Success!
+      alert("Signup successful! Please check your email to verify your account.");
       setIsSubmitting(false);
       onClose?.();
       onLoginClick?.();
-    }, 1000);
+    } catch (err) {
+      setServerError("Signup failed. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   const handleModalContainerClick = (e) => {
