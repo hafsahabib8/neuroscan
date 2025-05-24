@@ -501,7 +501,7 @@ body {
 }
 
 /* Footer */
-.footer {
+/* .footer {
   background: #003690;
   color: var(--white);
   text-align: center;
@@ -529,6 +529,134 @@ body {
 .footer p:last-child {
   opacity: 0.7;
   font-size: 0.9rem;
+} */
+
+/* Footer Base */
+.footer {
+  background: linear-gradient(135deg, #002f6c, #003690);
+  color: var(--white);
+  padding: 4rem 50px 50px;
+  position: relative;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* Layout */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Footer Sections */
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.footer-section h4::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--white);
+  margin-top: 0.4rem;
+  opacity: 0.6;
+}
+
+/* Typography */
+.footer-section p {
+  line-height: 1.7;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* List Styling */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-section ul li a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+/* Icons */
+.footer-section i {
+  color: var(--white);
+  min-width: 20px;
+  font-size: 1rem;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    align-items: center;
+  }
+
+  .footer-section ul li {
+    justify-content: center;
+  }
 }
 
 /* Animations */
