@@ -13,7 +13,8 @@ const Home = () => {
   });
   const navigate = useNavigate();
 
-  const [showLoginModal, setShowLoginModal] = useState(false); // ⬅️ Modal state
+  const [showLoginModal, setShowLoginModal] = useState(false); // ⬅️ Modal state\
+  const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
     const sections = document.querySelectorAll(".fade-in-section");
@@ -35,13 +36,40 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(
-      `Thanks for reaching out, ${formData.name}! We'll get back to you soon.`
+  const [statusMessage, setStatusMessage] = useState("");
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  // Optional: basic validation
+  if (!formData.name || !formData.email || !formData.message) {
+    setStatusMessage("Please fill in all fields.");
+    return;
+  }
+
+  emailjs
+    .send(
+      "service_3u4cvnj",    // Replace with your EmailJS service ID
+      "template_8iqy3pl",   // Replace with your EmailJS template ID
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      "S_2jb5_j4OJ31t74U"     // Replace with your EmailJS public key (user ID)
+    )
+    .then(
+      (response) => {
+        setStatusMessage("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      },
+      (error) => {
+        setStatusMessage("Failed to send message. Please try again later.");
+        console.error("EmailJS error:", error);
+      }
     );
-    setFormData({ name: "", email: "", message: "" });
-  };
+};
+
 
   return (
     <div className="home-container">
@@ -208,43 +236,45 @@ const Home = () => {
 
       {/* Contact Section */}
       <section id="contact" className="contact-section fade-in-section">
-        <h2>Contact Us</h2>
-        <form onSubmit={handleSubmit} className="contact-form" noValidate>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your full name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your.email@example.com"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message here..."
-            value={formData.message}
-            onChange={handleChange}
-            rows="5"
-            required
-          />
-          <button type="submit" className="btn primary-btn">
-            Send Message
-          </button>
-        </form>
-      </section>
+  <h2>Contact Us</h2>
+  <form onSubmit={handleSubmit} className="contact-form" noValidate>
+    <label htmlFor="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Your full name"
+      value={formData.name}
+      onChange={handleChange}
+      required
+    />
+    <label htmlFor="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="your.email@example.com"
+      value={formData.email}
+      onChange={handleChange}
+      required
+    />
+    <label htmlFor="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Write your message here..."
+      value={formData.message}
+      onChange={handleChange}
+      rows="5"
+      required
+    />
+    <button type="submit" className="btn primary-btn">
+      Send Message
+    </button>
+  </form>
+  {statusMessage && <p className="status-message">{statusMessage}</p>}
+</section>
+
 
       <footer className="footer">
         <div className="footer-content">
