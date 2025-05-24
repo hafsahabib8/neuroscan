@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Signup from "./Signup";
+import Navigation from "../home/header/Navigation";
+import Footer from "../home/footer/Footer";
+import Signup from "../Signup/Signup";
 import Login from "../login/Login";
-import Layout from "../Layout";
 import "./RoleSelection.css";
 
 const RoleSelection = () => {
@@ -19,11 +20,16 @@ const RoleSelection = () => {
   };
 
   return (
-    <Layout>
-      <div style={{ paddingTop: "7rem", textAlign: "center" }}>
-        <div className={`role-selection-container ${showSignup || showLogin ? "content-blurred" : ""}`}>
+    <>
+      {/* Main content with blur when signup or login modal is open */}
+      <div className={showSignup || showLogin ? "content-blurred" : ""}>
+        <Navigation hideAuthButtons={true} />
+
+        <div className="role-selection-container">
           <h1 className="role-selection-title">How do you want to get started?</h1>
-          <p className="role-selection-subtitle">Select the option that best describes your goal.</p>
+          <p className="role-selection-subtitle">
+            Select the option that best describes your goal.
+          </p>
 
           <div className="role-card-wrapper-horizontal">
             <div
@@ -31,7 +37,7 @@ const RoleSelection = () => {
               onClick={() => handleRoleSelection("user")}
             >
               <h2>I'm a User</h2>
-              <p>I want to use this Web Application to detect tumors from my scans.</p>
+              <p>I want to use this Web Application to detect tumors from my Scans</p>
             </div>
 
             <div
@@ -44,31 +50,33 @@ const RoleSelection = () => {
           </div>
         </div>
 
-        {/* Signup Modal */}
-        {showSignup && (
-          <Signup
-            onClose={handleCloseSignup}
-            initialRole={selectedRole}
-            onLoginClick={() => {
-              setShowSignup(false);
-              setShowLogin(true);
-            }}
-          />
-        )}
-
-        {/* Login Modal */}
-        {showLogin && (
-          <Login
-            onClose={() => setShowLogin(false)}
-            onSignupClick={(role = "user") => {
-              setShowLogin(false);
-              setSelectedRole(role);
-              setShowSignup(true);
-            }}
-          />
-        )}
+        <Footer />
       </div>
-    </Layout>
+
+      {/* Signup Modal */}
+      {showSignup && (
+        <Signup
+          onClose={handleCloseSignup}
+          initialRole={selectedRole}
+          onLoginClick={() => {
+            setShowSignup(false);
+            setShowLogin(true);
+          }}
+        />
+      )}
+
+      {/* Login Modal */}
+      {showLogin && (
+        <Login
+          onClose={() => setShowLogin(false)}
+          onSignupClick={(role = "user") => {
+            setShowLogin(false);
+            setSelectedRole(role);
+            setShowSignup(true);
+          }}
+        />
+      )}
+    </>
   );
 };
 
