@@ -49,7 +49,7 @@ const Home = () => {
     emailjs
       .send(
         "service_3u4cvnj",      // Your EmailJS service ID
-        "template_74vu2i2",     // Your EmailJS template ID
+        "template_mdufmpe",     // Your EmailJS template ID
         {
           name: formData.name,                        // matches {{name}} in template
           time: new Date().toLocaleString(),          // matches {{time}} in template
