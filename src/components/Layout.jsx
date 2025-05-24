@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
             <Link to="/home">About</Link>
           </li>
           <li>
-            <Link to="/home">........</Link>
+<Link style={{ color: "white" }}>......</Link>
           </li>
         </ul>
       </nav>
