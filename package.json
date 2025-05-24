@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
      "@hookform/resolvers": "^5.0.1",
     "@supabase/supabase-js": "^2.49.4",
+    "@emailjs/browser": "^4.4.1",
     "archiver": "^7.0.1",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
