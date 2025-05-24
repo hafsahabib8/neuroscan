@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Layout";
 import "./UploadThroughPacs.css";
@@ -13,6 +12,8 @@ const UploadThroughPacs = () => {
   const [loading, setLoading] = useState(false);
   const [segmenting, setSegmenting] = useState(false);
   const [filterText, setFilterText] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -89,75 +90,109 @@ const UploadThroughPacs = () => {
     setSegmentationResults(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("role");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    navigate("/home");
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <Layout>
-    <div className="page-wrapper">
-      <header className="header">
-        {/* <img src={require("../logo.png")} alt="Children's National Logo" className="logo" /> */}
-        <h2 className="heading">View Scans from PACS</h2>
-      </header>
+      <div className="page-wrapper">
+        <header className="header">
+          <h2 className="heading">View Scans from PACS</h2>
+        </header>
 
-      <div className="pacs-info-container">
-        <p className="pacs-info">
-          PACS is used to retrieve and analyze DICOM studies from connected servers.
-        </p>
-      </div>
-
-      <div className="white-container">
-        <input
-          type="text"
-          placeholder="Search by patient name"
-          value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
-          className="search-input"
-        />
-
-        {loading ? (
-          <div className="spinner-container">
-            <div className="custom-spinner"></div>
-            <p>Loading studies from PACS...</p>
+        {/* Hamburger / Dropdown Menu */}
+        <div className="hamburger-container" ref={dropdownRef}>
+          <div className="hamburger-icon" onClick={() => setDropdownOpen(!dropdownOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-        ) : segmenting ? (
-          <div className="spinner-container">
-            <div className="custom-spinner green-spinner"></div>
-            <p>Segmenting scan, please wait...</p>
-          </div>
-        ) : (
-          <div className="study-list">
-            {studies.length ? (
-              studies.map((study, index) => (
-                <div key={index} className="study-card">
-                  <p><strong>Patient Name:</strong> {study.PatientMainDicomTags?.PatientName || "Unknown"}</p>
-                  <p><strong>Patient ID:</strong> {study.PatientMainDicomTags?.PatientID || "N/A"}</p>
-                  <p><strong>Study Date:</strong> {study.MainDicomTags?.StudyDate || "N/A"}</p>
-                  <button onClick={() => fetchAndSegment(study.ID)} className="view-button">
-                    Segment Scan
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>No matching studies found.</p>
-            )}
-          </div>
-        )}
 
-        {segmentationResults && (
-          <div className="segmentation-result">
-            <h3>Tumor Detected: {segmentationResults.tumor_exists ? "Yes" : "No"}</h3>
-            <img
-              src={`data:image/png;base64,${segmentationResults.image}`}
-              alt="Segmentation Result"
-              className="segmentation-image"
-            />
-            <div className="result-buttons">
-              <button onClick={downloadSegmentationImage} className="download-button">Download</button>
-              <button onClick={handleReset} className="download-button">Reset</button>
+          {dropdownOpen && (
+            <div className="dropdown-menu">
+              <button onClick={handleLogout}>Logout</button>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
 
-    </div></Layout>
+        <div className="pacs-info-container">
+          <p className="pacs-info">
+            PACS is used to retrieve and analyze DICOM studies from connected servers.
+          </p>
+        </div>
+
+        <div className="white-container">
+          <input
+            type="text"
+            placeholder="Search by patient name"
+            value={filterText}
+            onChange={(e) => setFilterText(e.target.value)}
+            className="search-input"
+          />
+
+          {loading ? (
+            <div className="spinner-container">
+              <div className="custom-spinner"></div>
+              <p>Loading studies from PACS...</p>
+            </div>
+          ) : segmenting ? (
+            <div className="spinner-container">
+              <div className="custom-spinner green-spinner"></div>
+              <p>Segmenting scan, please wait...</p>
+            </div>
+          ) : (
+            <div className="study-list">
+              {studies.length ? (
+                studies.map((study, index) => (
+                  <div key={index} className="study-card">
+                    <p><strong>Patient Name:</strong> {study.PatientMainDicomTags?.PatientName || "Unknown"}</p>
+                    <p><strong>Patient ID:</strong> {study.PatientMainDicomTags?.PatientID || "N/A"}</p>
+                    <p><strong>Study Date:</strong> {study.MainDicomTags?.StudyDate || "N/A"}</p>
+                    <button onClick={() => fetchAndSegment(study.ID)} className="view-button">
+                      Segment Scan
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <p>No matching studies found.</p>
+              )}
+            </div>
+          )}
+
+          {segmentationResults && (
+            <div className="segmentation-result">
+              <h3>Tumor Detected: {segmentationResults.tumor_exists ? "Yes" : "No"}</h3>
+              <img
+                src={`data:image/png;base64,${segmentationResults.image}`}
+                alt="Segmentation Result"
+                className="segmentation-image"
+              />
+              <div className="result-buttons">
+                <button onClick={downloadSegmentationImage} className="download-button">Download</button>
+                <button onClick={handleReset} className="download-button">Reset</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </Layout>
   );
 };
 
