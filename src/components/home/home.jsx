@@ -37,7 +37,7 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -48,17 +48,17 @@ const Home = () => {
 
     emailjs
       .send(
-        "service_3u4cvnj",    // Replace with your EmailJS service ID
-        "template_8iqy3pl",   // Replace with your EmailJS template ID
+        "service_3u4cvnj",      // Your EmailJS service ID
+        "template_74vu2i2",     // Your EmailJS template ID
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
+          name: formData.name,                        // matches {{name}} in template
+          time: new Date().toLocaleString(),          // matches {{time}} in template
+          message: formData.message,                  // matches {{message}} in template
         },
-        "S_2jb5_j4OJ31t74U"   // Replace with your EmailJS public key (user ID)
+        "S_2jb5_j4OJ31t74U"      // Your EmailJS public key
       )
       .then(
-        (response) => {
+        () => {
           setStatusMessage("Message sent successfully!");
           setFormData({ name: "", email: "", message: "" });
         },
