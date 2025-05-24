@@ -1,16 +1,8 @@
-/* === MODAL OVERLAY LOGIN STYLES === */
-
-/* Remove container styling - we're using modal overlay now */
-/* Prevent body scroll when modal is open */
-body {
-  overflow-x: hidden;
-  overscroll-behavior: none;
-}
 
 /* Avoid scroll inside modal unless content exceeds height */
 .login-modal-card {
-  overflow-y: auto;
-  max-height: 90vh;
+  overflow-y: hidden;
+  max-height: auto;
 }
 
 .login-container {
@@ -50,7 +42,7 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   position: relative;
-  overflow-y: auto;
+  overflow-y: hidden;
   animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
