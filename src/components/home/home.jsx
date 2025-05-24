@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser"; // <-- Add this import!
 import "./home.css";
 import image from "../../assets/brain.jpg";
 import Login from "../login/Login";
@@ -13,7 +14,7 @@ const Home = () => {
   });
   const navigate = useNavigate();
 
-  const [showLoginModal, setShowLoginModal] = useState(false); // ⬅️ Modal state\
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
@@ -36,38 +37,37 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // Optional: basic validation
-  if (!formData.name || !formData.email || !formData.message) {
-    setStatusMessage("Please fill in all fields.");
-    return;
-  }
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatusMessage("Please fill in all fields.");
+      return;
+    }
 
-  emailjs
-    .send(
-      "service_3u4cvnj",    // Replace with your EmailJS service ID
-      "template_8iqy3pl",   // Replace with your EmailJS template ID
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
-      "S_2jb5_j4OJ31t74U"     // Replace with your EmailJS public key (user ID)
-    )
-    .then(
-      (response) => {
-        setStatusMessage("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
-      },
-      (error) => {
-        setStatusMessage("Failed to send message. Please try again later.");
-        console.error("EmailJS error:", error);
-      }
-    );
-};
-
+    emailjs
+      .send(
+        "service_3u4cvnj",    // Replace with your EmailJS service ID
+        "template_8iqy3pl",   // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "S_2jb5_j4OJ31t74U"   // Replace with your EmailJS public key (user ID)
+      )
+      .then(
+        (response) => {
+          setStatusMessage("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          setStatusMessage("Failed to send message. Please try again later.");
+          console.error("EmailJS error:", error);
+        }
+      );
+  };
 
   return (
     <div className="home-container">
@@ -234,46 +234,46 @@ const handleSubmit = (e) => {
 
       {/* Contact Section */}
       <section id="contact" className="contact-section fade-in-section">
-  <h2>Contact Us</h2>
-  <form onSubmit={handleSubmit} className="contact-form" noValidate>
-    <label htmlFor="name">Name</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Your full name"
-      value={formData.name}
-      onChange={handleChange}
-      required
-    />
-    <label htmlFor="email">Email</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="your.email@example.com"
-      value={formData.email}
-      onChange={handleChange}
-      required
-    />
-    <label htmlFor="message">Message</label>
-    <textarea
-      id="message"
-      name="message"
-      placeholder="Write your message here..."
-      value={formData.message}
-      onChange={handleChange}
-      rows="5"
-      required
-    />
-    <button type="submit" className="btn primary-btn">
-      Send Message
-    </button>
-  </form>
-  {statusMessage && <p className="status-message">{statusMessage}</p>}
-</section>
+        <h2>Contact Us</h2>
+        <form onSubmit={handleSubmit} className="contact-form" noValidate>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your.email@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            value={formData.message}
+            onChange={handleChange}
+            rows="5"
+            required
+          />
+          <button type="submit" className="btn primary-btn">
+            Send Message
+          </button>
+        </form>
+        {statusMessage && <p className="status-message">{statusMessage}</p>}
+      </section>
 
-
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
@@ -283,7 +283,6 @@ const handleSubmit = (e) => {
               from medical scans. Empowering health through AI.
             </p>
           </div>
-
           <div className="footer-section links">
             <h4>Quick Links</h4>
             <ul>
@@ -298,7 +297,6 @@ const handleSubmit = (e) => {
               </li>
             </ul>
           </div>
-
           <div className="footer-section team">
             <h4>Team</h4>
             <ul>
@@ -331,7 +329,6 @@ const handleSubmit = (e) => {
               </li>
             </ul>
           </div>
-
           <div className="footer-section contact">
             <h4>Contact Us</h4>
             <ul>
@@ -354,12 +351,12 @@ const handleSubmit = (e) => {
             </ul>
           </div>
         </div>
-
         <div className="footer-bottom">
           <p>© 2025 NeuroScan – All rights reserved.</p>
         </div>
       </footer>
-      {/* ✅ Login Modal */}
+
+      {/* Login Modal */}
       {showLoginModal && <Login onClose={() => setShowLoginModal(false)} />}
     </div>
   );
