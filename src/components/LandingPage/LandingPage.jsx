@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
-import ABCVideo from "./highquality.mp4";
-import Logo from "./logo.png";
+import ABCVideo from "../../assets/highquality.mp4";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -23,22 +22,7 @@ const LandingPage = () => {
       </video>
       <div className="logo">NeuroScan</div>
 
-      {/* <img
-        src={Logo}
-        alt="NeuroScan Logo"
-        className="landing-logo"
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "20px",
-          width: "200px",
-          zIndex: 2,
-        }}
-      /> */}
-
-      <div className="content">
-        {/* Optional descriptive text */}
-      </div>
+      <div className="content">{/* Optional descriptive text */}</div>
 
       <button className="go-ahead-button" onClick={handleNavigation}>
         Begin Analysis →
