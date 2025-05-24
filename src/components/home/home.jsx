@@ -36,8 +36,6 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const [statusMessage, setStatusMessage] = useState("");
-
 const handleSubmit = (e) => {
   e.preventDefault();
 
