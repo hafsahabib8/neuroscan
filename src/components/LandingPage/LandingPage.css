@@ -1,11 +1,3 @@
-/* === ORIGINAL CSS (unchanged) === */
- /* html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}  */
-
-
 .landing-container {
   position: relative;
   height: 100vh;
@@ -19,16 +11,35 @@
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-top: 14px;
+  margin-left: 25px;
   background-clip: text;
   position: relative;
 }
+
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover::after {
+  transform: scaleX(1);
+}
+
 .background-video {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   height: 100%;
-  object-fit:fill;
+  object-fit: fill;
   transform: translate(-50%, -50%);
   z-index: -1;
   background-color: black; /* prevents white bars if video doesn't fill screen */
