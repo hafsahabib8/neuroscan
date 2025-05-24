@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import supabase from "../path/to/supabaseClient";
+import supabase from "../Signup/supabaseClient";
 import "./Login.css";
 
 const loginSchema = yup.object().shape({
