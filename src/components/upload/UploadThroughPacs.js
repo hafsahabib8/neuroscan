@@ -92,11 +92,6 @@ const UploadThroughPacs = () => {
   return (
  <Layout>
     <div className="page-wrapper">
-      <header className="header">
-        <img src={require("../logo.png")} alt="Children's National Logo" className="logo" />
-        <h2 className="heading">View Scans from PACS</h2>
-      </header>
-
       <div className="pacs-info-container">
         <p className="pacs-info">
           PACS is used to retrieve and analyze DICOM studies from connected servers.
