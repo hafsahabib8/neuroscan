@@ -89,22 +89,45 @@ const Login = ({ onClose, initialRole = "user", onSignupClick }) => {
     }
   };
 
-  const handleForgotPassword = async () => {
+  // const handleForgotPassword = async () => {
+  //   if (!contactInfo) return setMessage("Please enter your email");
+    
+  //   setMessage("Sending reset instructions...");
+  //   const { error } = await supabase.auth.resetPasswordForEmail(contactInfo, {
+  //     redirectTo: "https://yourdomain.com/reset-password",
+  //   });
+
+  //   setMessage(error?.message || "Reset email sent!");
+  //   setTimeout(() => {
+  //     setShowForgotModal(false);
+  //     setContactInfo("");
+  //     setMessage("");
+  //   }, 3000);
+  // };
+const handleForgotPassword = async () => {
     if (!contactInfo) return setMessage("Please enter your email");
     
     setMessage("Sending reset instructions...");
+    
+    // Make sure this URL matches your actual domain and route
+    const resetUrl = `${window.location.origin}/reset-password`;
+    
     const { error } = await supabase.auth.resetPasswordForEmail(contactInfo, {
-      redirectTo: "https://yourdomain.com/reset-password",
+      redirectTo: resetUrl,
     });
 
-    setMessage(error?.message || "Reset email sent!");
+    if (error) {
+      setMessage("Error: " + error.message);
+    } else {
+      setMessage("Reset email sent! Check your inbox and click the link to reset your password.");
+    }
+    
     setTimeout(() => {
       setShowForgotModal(false);
       setContactInfo("");
       setMessage("");
-    }, 3000);
+    }, 5000); // Increased timeout to give user time to read success message
   };
-
   return (
     <div className="login-modal-overlay" onClick={onClose}>
       <div className="login-modal-card" onClick={(e) => e.stopPropagation()}>
