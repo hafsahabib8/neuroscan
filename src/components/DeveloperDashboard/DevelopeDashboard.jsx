@@ -36,6 +36,16 @@ const DeveloperDashboard = () => {
   const [selectedModel, setSelectedModel] = useState('model1');
   const navigate = useNavigate();
 
+  // Protect route: redirect if no token or wrong role
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+
+    if (!token || role !== 'developer') {
+      navigate('/home');
+    }
+  }, [navigate]);
+
   useEffect(() => {
     const fetchModelPerformance = async () => {
       try {
@@ -68,7 +78,15 @@ const DeveloperDashboard = () => {
     return () => clearInterval(interval);
   }, [refreshInterval, selectedModel]);
 
-  const handleLogout = () => navigate('/home');
+  const handleLogout = () => {
+    // Clear tokens from storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+
+    // Redirect to home page
+    navigate('/home');
+  };
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
