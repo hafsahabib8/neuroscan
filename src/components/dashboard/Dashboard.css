@@ -288,6 +288,7 @@ body {
 .pacs-button {
   background: linear-gradient(135deg, rgba(245, 87, 108, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
   border-color: rgba(245, 87, 108, 0.3);
+  color:black;
 }
 
 .pacs-button::before {
@@ -297,6 +298,7 @@ body {
 .pacs-button:hover {
   border-color: rgba(245, 87, 108, 0.5);
   box-shadow: 0 0 40px rgba(245, 87, 108, 0.3);
+  color: white;
 }
 
 /* Enhanced brain health hero section */
@@ -336,7 +338,6 @@ body {
   margin-bottom: 32px;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
   font-family: 'Space Grotesk', sans-serif;
