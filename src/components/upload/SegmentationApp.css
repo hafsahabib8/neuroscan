@@ -1,0 +1,493 @@
+/* NeuroScan - Streamlined Medical UI Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --primary-blue: #0066ff;
+  --secondary-blue: #0ebeff;
+  --dark-blue: #003d99;
+  --light-blue: #e6f3ff;
+  --accent-cyan: #00d4ff;
+  --neural-purple: #6366f1;
+  
+  /* Neutrals */
+  --white: #ffffff;
+  --light-gray: #f8fafc;
+  --medium-gray: #64748b;
+  --dark-gray: #1e293b;
+  --black: #0f172a;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #005be2 0%, #003690 100%);
+  --gradient-neural: linear-gradient(
+    135deg,
+    var(--primary-blue) 0%,
+    var(--neural-purple) 100%
+  );
+  --gradient-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(14, 190, 255, 0.3);
+  
+  /* Typography */
+  --font-primary: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
+    system-ui, sans-serif;
+  --font-display: "Poppins", var(--font-primary);
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  
+  /* Transitions */
+  --transition-all: all 0.2s ease;
+  --transition-colors: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--gradient-bg);
+  color: var(--black);
+  line-height: 1.6;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Layout */
+.segmentation-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Section Base */
+section {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(14, 190, 255, 0.1);
+  transition: var(--transition-all);
+  grid-column: span 12;
+}
+
+section:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+/* Section Headers */
+section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+}
+
+section h2::before {
+  content: '';
+  width: 3px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius);
+}
+
+/* Upload Section */
+.upload-section {
+  grid-column: span 12;
+}
+
+.upload-section .file-input-group {
+  background: var(--light-gray);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  border: 2px solid transparent;
+  transition: var(--transition-all);
+}
+
+.upload-section .file-input-group:hover {
+  border-color: var(--secondary-blue);
+  background: var(--light-blue);
+}
+
+.upload-section .file-input-group.has-file {
+  border-color: var(--primary-blue);
+  background: var(--light-blue);
+}
+
+.upload-section .file-input-group label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-3);
+}
+
+.info-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-blue);
+  background: var(--white);
+  color: var(--primary-blue);
+  font-weight: 500;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: var(--transition-all);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-button:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+/* File Input Styling */
+input[type="file"] {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px dashed var(--medium-gray);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--medium-gray);
+  cursor: pointer;
+  transition: var(--transition-all);
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+}
+
+input[type="file"]:hover {
+  border-color: var(--primary-blue);
+  background: var(--light-blue);
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.1);
+}
+
+/* Buttons */
+button {
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: var(--transition-all);
+  box-shadow: var(--shadow-sm);
+  min-height: 40px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modality Selection - Compact */
+.modality-selection {
+  grid-column: span 8;
+}
+
+.modality-selection select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.modality-selection select:hover {
+  border-color: var(--primary-blue);
+}
+
+.modality-selection select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.1);
+}
+
+/* Tumor Detection - Compact Size */
+.tumor-detection {
+  grid-column: span 4;
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.tumor-detection h2 {
+  font-size: 1rem;
+  margin-bottom: var(--space-3);
+}
+
+.tumor-detection button {
+  width: 100%;
+  font-size: 0.8rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 36px;
+}
+
+.tumor-result {
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 0.8rem;
+  background: var(--light-blue);
+  border: 1px solid var(--secondary-blue);
+  color: var(--dark-blue);
+}
+
+/* Segmentation Viewer */
+.segmentation-viewer {
+  grid-column: span 12;
+}
+
+.image-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.image-view {
+  background: var(--light-gray);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border: 1px solid rgba(14, 190, 255, 0.1);
+  transition: var(--transition-all);
+}
+
+.image-view:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-color: var(--secondary-blue);
+}
+
+.image-view h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark-gray);
+  margin-bottom: var(--space-3);
+  text-align: center;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid rgba(14, 190, 255, 0.2);
+}
+
+.segmentation-image {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid rgba(14, 190, 255, 0.2);
+  margin-bottom: var(--space-3);
+  transition: var(--transition-all);
+  cursor: pointer;
+}
+
+.segmentation-image:hover {
+  border-color: var(--secondary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius);
+  background: rgba(14, 190, 255, 0.2);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  cursor: pointer;
+  border: none;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  max-width: 450px;
+  width: 90%;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(14, 190, 255, 0.1);
+}
+
+.modal-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-display);
+}
+
+.modal-content p {
+  margin-bottom: var(--space-4);
+  color: var(--medium-gray);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Status Message */
+div[style*="position: fixed"][style*="bottom: 20px"] {
+  background: var(--gradient-primary) !important;
+  color: var(--white) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  border-radius: var(--radius-md) !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .segmentation-app {
+    padding: var(--space-8);
+    gap: var(--space-8);
+  }
+  
+  section {
+    padding: var(--space-8);
+  }
+  
+  section h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .image-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .segmentation-app {
+    padding: var(--space-3);
+    gap: var(--space-3);
+  }
+  
+  section {
+    padding: var(--space-4);
+  }
+  
+  section h2 {
+    font-size: 1.1rem;
+  }
+  
+  .modality-selection {
+    grid-column: span 12;
+  }
+  
+  .tumor-detection {
+    grid-column: span 12;
+  }
+  
+  .image-group {
+    grid-template-columns: 1fr;
+  }
+  
+  .segmentation-image {
+    height: 180px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
