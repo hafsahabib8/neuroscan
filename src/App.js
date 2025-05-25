@@ -22,7 +22,7 @@ function App() {
         <Route path="/segmentation" element={<SegmentationApp />} />
         <Route path="/upload-pacs" element={<UploadThroughPacs />} />
         <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
-        <Route path="/info" element={<BrainTumorInfoPage />} />
+        <Route path="/info" element={<InfoModal />} />
         <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
