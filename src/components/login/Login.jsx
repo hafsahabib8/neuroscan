@@ -109,14 +109,17 @@ const handleForgotPassword = async () => {
     
     setMessage("Sending reset instructions...");
     
-    // Make sure this URL matches your actual domain and route
-    const resetUrl = `${window.location.origin}/reset-password`;
+    // Use your exact Vercel domain with the reset path
+    const resetUrl = "https://neuroscan-pi.vercel.app/reset-password";
+    
+    console.log("Sending reset email with redirect URL:", resetUrl);
     
     const { error } = await supabase.auth.resetPasswordForEmail(contactInfo, {
       redirectTo: resetUrl,
     });
 
     if (error) {
+      console.error("Reset password error:", error);
       setMessage("Error: " + error.message);
     } else {
       setMessage("Reset email sent! Check your inbox and click the link to reset your password.");
@@ -126,7 +129,7 @@ const handleForgotPassword = async () => {
       setShowForgotModal(false);
       setContactInfo("");
       setMessage("");
-    }, 5000); // Increased timeout to give user time to read success message
+    }, 5000);
   };
   return (
     <div className="login-modal-overlay" onClick={onClose}>
