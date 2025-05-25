@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 
 import "./home/home.css"; // use your shared stylesheet
 import Home from "./home/home";
-import InfoModal from "./infopage/info"; 
+import newvid from "../assets/neurologo.gif";
 
-const Layout = ({ children }) => {  
+import InfoModal from "./infopage/info";
+
+const Layout = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
 
   const location = useLocation();
@@ -23,7 +25,27 @@ const Layout = ({ children }) => {
 
       {/* Navigation */}
       <nav className="navbar">
-        <div className="logo">NeuroScan</div>
+        <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
+          <div
+            className="logo"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={newvid}
+              alt="NeuroScan Logo"
+              style={{ height: "60px", width: "40px", objectFit: "contain" }}
+            />
+            <span style={{ fontSize: "25px", fontWeight: "bold" }}>
+              NeuroScan
+            </span>
+          </div>
+        </Link>
+
         <ul className="nav-links">
           <li>
             <Link to="/home">Home</Link>
@@ -44,7 +66,7 @@ const Layout = ({ children }) => {
             </a>
           </li>
           <li>
-<Link style={{ color: "white" }}>......</Link>
+            <Link style={{ color: "white" }}>......</Link>
           </li>
         </ul>
       </nav>
@@ -136,8 +158,7 @@ const Layout = ({ children }) => {
           <p>© 2025 NeuroScan – All rights reserved.</p>
         </div>
       </footer>
-            {showModal && <InfoModal onClose={() => setShowModal(false)} />}
-
+      {showModal && <InfoModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };
