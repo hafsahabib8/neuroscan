@@ -339,7 +339,7 @@ const Home = () => {
             <ul>
               <li>
                 <a
-                  href="https://github.com/hafsa"
+                  href="https://github.com/hafsaahabib"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -348,7 +348,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/malaika"
+                  href="https://github.com/malaika-s27"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
