@@ -367,7 +367,7 @@ const SegmentationApp = () => {
           disabled={loading}
           style={{
             padding: "10px 20px",
-            backgroundColor: loading ? "#ccc" : "#4CAF50",
+            backgroundColor: loading ? "#ccc" : "#2196F3",
             color: "white",
             borderRadius: "8px",
             fontSize: "16px",
@@ -498,7 +498,7 @@ const SegmentationApp = () => {
           disabled={generating || loading}
           style={{
             padding: "10px 20px",
-            backgroundColor: generating ? "#ccc" : "#4CAF50",
+            backgroundColor: generating ? "#ccc" : "#2196F3",
             color: "white",
             borderRadius: "8px",
             fontSize: "16px",
