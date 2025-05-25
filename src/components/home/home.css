@@ -541,7 +541,7 @@ body {
 .footer {
   background: linear-gradient(135deg, #002f6c, #003690);
   color: var(--white);
-  padding: 1rem 40px 0px;
+  padding: 2rem 40px 0px;
   position: relative;
   font-size: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -573,7 +573,7 @@ body {
 
 /* Footer Sections */
 .footer-section {
-  flex: 1 1 250px;
+  flex: 1 1 110px;
   min-width: 220px;
 }
 
