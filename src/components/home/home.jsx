@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import emailjs from "@emailjs/browser"; // <-- Add this import!
+import emailjs from "@emailjs/browser";
 import "./home.css";
 import image from "../../assets/brain.jpg";
 import Login from "../login/Login";
 import RoleSelection from "../Signup/RoleSelection";
-import InfoModal from "../infopage/info"; 
+import InfoModal from "../infopage/info";
 import newvid from "../../assets/neurologo.gif";
 import childlogo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
@@ -42,7 +42,7 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -53,14 +53,14 @@ const Home = () => {
 
     emailjs
       .send(
-        "service_3u4cvnj",      // Your EmailJS service ID
-        "template_mdufmpe",     // Your EmailJS template ID
+        "service_3u4cvnj",
+        "template_mdufmpe",
         {
-          name: formData.name,                        // matches {{name}} in template
-          time: new Date().toLocaleString(),          // matches {{time}} in template
-          message: formData.message,                  // matches {{message}} in template
+          name: formData.name,
+          time: new Date().toLocaleString(),
+          message: formData.message,
         },
-        "S_2jb5_j4OJ31t74U"      // Your EmailJS public key
+        "S_2jb5_j4OJ31t74U"
       )
       .then(
         () => {
@@ -82,7 +82,7 @@ const Home = () => {
 
       {/* Navigation */}
       <nav className="navbar">
-<Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
           <div
             className="logo"
             style={{
@@ -108,12 +108,12 @@ const Home = () => {
               Home
             </a>
           </li>
-           <li>
+          <li>
             <a
               href="#info"
               className="info-link"
               onClick={(e) => {
-                e.preventDefault(); // Prevent normal anchor navigation
+                e.preventDefault();
                 setShowModal(true);
               }}
             >
@@ -168,7 +168,7 @@ const Home = () => {
       {/* Hero Section */}
       <header id="home" className="hero-section fade-in-section">
         <div className="hero-text">
-          <h1>Revolutionizing Brain Image Segmentation</h1>
+          <h1>Revolutionizing Brain Image Analysis</h1>
           <p>
             Advanced AI-powered tool to detect and segment brain tumors with
             precision and ease.
@@ -198,15 +198,25 @@ const Home = () => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       />
-      {/* About Section */}
+
       <section id="about" className="about-section fade-in-section">
         <h2>About NeuroScan</h2>
         <p>
-          NeuroScan leverages cutting-edge deep learning models trained on vast
-          datasets of brain MRI scans to accurately identify and segment tumors.
-          Designed for neurologists, radiologists, and researchers, our
-          web-based platform simplifies complex image analysis, enabling faster
-          diagnosis and treatment planning.
+          NeuroScan is designed to make brain tumor detection faster and easier.
+          Our platform uses advanced deep learning algorithms to analyze MRI
+          scans and assist healthcare professionals in diagnosing brain tumors
+          with greater speed and accuracy. We know that time is critical when it
+          comes to medical diagnoses, which is why we created a tool that’s
+          simple, quick, and reliable. Whether you're a radiologist or a
+          healthcare provider, our user-friendly interface helps you upload MRI
+          scans in seconds, process them effortlessly, and get detailed results
+          in just moments. Our tool is built to integrate seamlessly into
+          hospital workflows, with PACS support to directly fetch imaging data.
+          It’s all about giving healthcare professionals a second opinion they
+          can trust, enhancing decision-making, and ultimately improving patient
+          care. At the heart of our work is a commitment to making medical
+          imaging more accessible, so that doctors and researchers can focus on
+          what matters most—saving lives.
         </p>
         <div className="features-grid">
           <FeatureCard
@@ -268,9 +278,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="contact-section fade-in-section">
-       <div className="bg-layer"></div> 
+        <div className="bg-layer"></div>
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <label htmlFor="name">Name</label>
@@ -310,14 +319,14 @@ const Home = () => {
         {statusMessage && <p className="status-message">{statusMessage}</p>}
       </section>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
             <h3>NeuroScan</h3>
-            <p>
-              A brain image segmentation tool that helps users detect tumors
-              from medical scans. Empowering health through AI.
+            <p style="text-align: justify;">
+              A brain image analysis tool that helps users detect tumors from
+              medical scans. Our aim is to make medical image diagnosis easier
+              and faster with the power of AI.
             </p>
           </div>
           <div className="footer-section links">
@@ -339,7 +348,7 @@ const Home = () => {
             <ul>
               <li>
                 <a
-                  href="https://github.com/hafsa"
+                  href="https://github.com/hafsaahabib"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -348,7 +357,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/malaika"
+                  href="https://github.com/malaika-s27"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -357,7 +366,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/aqsa"
+                  href="https://github.com/AqsaSyed01"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -388,11 +397,11 @@ const Home = () => {
             </ul>
           </div>
         </div>
-          <div className="footer-bottom">
+        <div className="footer-bottom">
           <p>
             © NeuroScan powered by{" "}
             <img
-              src={childlogo} 
+              src={childlogo}
               alt="Powered by Logo"
               className="powered-by-logo"
             />
