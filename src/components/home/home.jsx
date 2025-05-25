@@ -5,6 +5,7 @@ import "./home.css";
 import image from "../../assets/brain.jpg";
 import Login from "../login/Login";
 import RoleSelection from "../Signup/RoleSelection";
+import InfoModal from "../infopage/info"; 
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const Home = () => {
     message: "",
   });
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -82,6 +84,18 @@ const Home = () => {
           <li>
             <a href="#home" className="active">
               Home
+            </a>
+          </li>
+           <li>
+            <a
+              href="#info"
+              className="info-link"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent normal anchor navigation
+                setShowModal(true);
+              }}
+            >
+              Info
             </a>
           </li>
           <li>
@@ -356,7 +370,7 @@ const Home = () => {
         </div>
       </footer>
 
-      {/* Login Modal */}
+      {showModal && <InfoModal onClose={() => setShowModal(false)} />}
       {showLoginModal && <Login onClose={() => setShowLoginModal(false)} />}
     </div>
   );
