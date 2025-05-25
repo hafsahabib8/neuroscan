@@ -357,7 +357,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/aqsa"
+                  href="https://github.com/AqsaSyed01"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
