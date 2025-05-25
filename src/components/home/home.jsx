@@ -8,8 +8,7 @@ import RoleSelection from "../Signup/RoleSelection";
 import InfoModal from "../infopage/info"; 
 import newvid from "../../assets/neurologo.gif";
 import childlogo from "../../assets/logo.png";
-
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [formData, setFormData] = useState({
