@@ -9,7 +9,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import UploadThroughPacs from "./components/upload/UploadThroughPacs";
 import DeveloperDashboard from "./components/DeveloperDashboard/DevelopeDashboard";
 import SegmentationApp from "./components/upload/SegmentationApp";
-import BrainTumorInfoPage from "./components/infopage/info";
+import InfoModal from "./components/infopage/info";
 function App() {
   return (
     <Router>
