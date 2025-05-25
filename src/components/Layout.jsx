@@ -1,8 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import "./home/home.css"; // use your shared stylesheet
 import Home from "./home/home";
-const Layout = ({ children }) => {
+import InfoModal from "./infopage/info"; 
+
+const Layout = ({ children }) => {  
+  const [showModal, setShowModal] = useState(false);
+
   const location = useLocation();
 
   return (
@@ -24,6 +30,18 @@ const Layout = ({ children }) => {
           </li>
           <li>
             <Link to="/home">About</Link>
+          </li>
+          <li>
+            <a
+              href="#info"
+              className="info-link"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent normal anchor navigation
+                setShowModal(true);
+              }}
+            >
+              Info
+            </a>
           </li>
           <li>
 <Link style={{ color: "white" }}>......</Link>
@@ -118,6 +136,8 @@ const Layout = ({ children }) => {
           <p>© 2025 NeuroScan – All rights reserved.</p>
         </div>
       </footer>
+            {showModal && <InfoModal onClose={() => setShowModal(false)} />}
+
     </div>
   );
 };
