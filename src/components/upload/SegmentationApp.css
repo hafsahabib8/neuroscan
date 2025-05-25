@@ -162,19 +162,6 @@ section h2::before {
 }
 
 .info-button {
-      background: var(--gradient-primary);
-  color: var(--white);
-  border: none;
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius);
-  font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 0.85rem;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: var(--transition-all);
-  box-shadow: var(--shadow-sm);
-  min-height: 40px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -191,8 +178,6 @@ section h2::before {
 }
 
 .info-button:hover {
-     transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
   background: var(--primary-blue);
   color: var(--white);
   transform: scale(1.05);
@@ -238,7 +223,7 @@ input[type="file"]:focus {
   transition: var(--transition-all);
   box-shadow: var(--shadow-sm);
   min-height: 40px;
-} */
+}
 
 .uploadbtn:hover {
   transform: translateY(-1px);
