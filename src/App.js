@@ -8,6 +8,7 @@ import Signup from "./components/Signup/Signup";
 import Dashboard from "./components/dashboard/Dashboard";
 import UploadThroughPacs from "./components/upload/UploadThroughPacs";
 import DeveloperDashboard from "./components/DeveloperDashboard/DevelopeDashboard";
+import SegmentationApp from "./components/upload/SegmentationApp";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/roleselect" element={<RoleSelection />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/segmentation" element={<SegmentationApp />} />
         <Route path="/upload-pacs" element={<UploadThroughPacs />} />
         <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
         <Route path="/home" element={<Home />} />
