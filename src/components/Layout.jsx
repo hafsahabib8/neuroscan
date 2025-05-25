@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import childlogo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
 import "./home/home.css"; 
 import Home from "./home/home";
 import newvid from "../assets/neurologo.gif";
