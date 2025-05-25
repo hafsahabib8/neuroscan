@@ -168,7 +168,7 @@ const Home = () => {
       {/* Hero Section */}
       <header id="home" className="hero-section fade-in-section">
         <div className="hero-text">
-          <h1>Revolutionizing Brain Image Analysis</h1>
+          <h1>Revolutionizing Brain Image Segmentation</h1>
           <p>
             Advanced AI-powered tool to detect and segment brain tumors with
             precision and ease.
@@ -315,9 +315,9 @@ const Home = () => {
         <div className="footer-content">
           <div className="footer-section about">
             <h3>NeuroScan</h3>
-            <p style="text-align: justify;">
-              A brain image analysis tool that helps users detect tumors
-              from medical scans. Our aim is to make medical image diagnosis easier and faster with the power of AI.
+            <p>
+              A brain image segmentation tool that helps users detect tumors
+              from medical scans. Empowering health through AI.
             </p>
           </div>
           <div className="footer-section links">
@@ -339,7 +339,7 @@ const Home = () => {
             <ul>
               <li>
                 <a
-                  href="https://github.com/hafsaahabib"
+                  href="https://github.com/hafsa"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -348,7 +348,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/malaika-s27"
+                  href="https://github.com/malaika"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -357,7 +357,7 @@ const Home = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/AqsaSyed01"
+                  href="https://github.com/aqsa"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
