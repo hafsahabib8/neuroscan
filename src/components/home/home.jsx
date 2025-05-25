@@ -168,7 +168,7 @@ const Home = () => {
       {/* Hero Section */}
       <header id="home" className="hero-section fade-in-section">
         <div className="hero-text">
-          <h1>Revolutionizing Brain Image Segmentation</h1>
+          <h1>Revolutionizing Brain Image Analysis</h1>
           <p>
             Advanced AI-powered tool to detect and segment brain tumors with
             precision and ease.
@@ -202,11 +202,9 @@ const Home = () => {
       <section id="about" className="about-section fade-in-section">
         <h2>About NeuroScan</h2>
         <p>
-          NeuroScan leverages cutting-edge deep learning models trained on vast
-          datasets of brain MRI scans to accurately identify and segment tumors.
-          Designed for neurologists, radiologists, and researchers, our
-          web-based platform simplifies complex image analysis, enabling faster
-          diagnosis and treatment planning.
+        Neuroscan simplifies and speeds up brain tumor detection using deep learning. 
+        By analyzing MRI scans quickly and accurately, it supports healthcare professionals with a reliable second opinion. 
+        With PACS integration and an easy-to-use interface, it fits smoothly into hospital workflows—helping improve diagnoses and patient care.
         </p>
         <div className="features-grid">
           <FeatureCard
@@ -373,12 +371,12 @@ const Home = () => {
                 <i className="fas fa-envelope"></i> info@neuroscan.ai
               </li>
               <li>
-                <i className="fas fa-map-marker-alt"></i> Lahore, Pakistan
+                <i className="fas fa-map-marker-alt"></i> Islamabad, Pakistan
               </li>
               <li>
                 <i className="fab fa-github"></i>{" "}
                 <a
-                  href="https://github.com/neuroscan"
+                  href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
