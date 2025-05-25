@@ -9,7 +9,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import UploadThroughPacs from "./components/upload/UploadThroughPacs";
 import DeveloperDashboard from "./components/DeveloperDashboard/DevelopeDashboard";
 import SegmentationApp from "./components/upload/SegmentationApp";
-
+import BrainTumorInfoPage from "./components/infopage/info";
 function App() {
   return (
     <Router>
@@ -22,6 +22,7 @@ function App() {
         <Route path="/segmentation" element={<SegmentationApp />} />
         <Route path="/upload-pacs" element={<UploadThroughPacs />} />
         <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
+        <Route path="/info" element={<BrainTumorInfoPage />} />
         <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
