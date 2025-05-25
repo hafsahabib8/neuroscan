@@ -22,8 +22,6 @@ const LandingPage = () => {
       </video>
       <div className="logo">NeuroScan</div>
 
-      <div className="content">{/* Optional descriptive text */}</div>
-
       <button className="go-ahead-button" onClick={handleNavigation}>
         Begin Analysis →
       </button>
