@@ -6,6 +6,10 @@ import image from "../../assets/brain.jpg";
 import Login from "../login/Login";
 import RoleSelection from "../Signup/RoleSelection";
 import InfoModal from "../infopage/info"; 
+import newvid from "../../assets/neurologo.gif";
+import childlogo from "../../assets/logo.png";
+
+
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -79,7 +83,26 @@ const Home = () => {
 
       {/* Navigation */}
       <nav className="navbar">
-        <div className="logo">NeuroScan</div>
+<Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
+          <div
+            className="logo"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={newvid}
+              alt="NeuroScan Logo"
+              style={{ height: "60px", width: "40px", objectFit: "contain" }}
+            />
+            <span style={{ fontSize: "25px", fontWeight: "bold" }}>
+              NeuroScan
+            </span>
+          </div>
+        </Link>
         <ul className="nav-links">
           <li>
             <a href="#home" className="active">
@@ -248,6 +271,7 @@ const Home = () => {
 
       {/* Contact Section */}
       <section id="contact" className="contact-section fade-in-section">
+       <div className="bg-layer"></div> 
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <label htmlFor="name">Name</label>
@@ -365,8 +389,15 @@ const Home = () => {
             </ul>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>© 2025 NeuroScan – All rights reserved.</p>
+          <div className="footer-bottom">
+          <p>
+            © NeuroScan powered by{" "}
+            <img
+              src={childlogo} 
+              alt="Powered by Logo"
+              className="powered-by-logo"
+            />
+          </p>
         </div>
       </footer>
 
