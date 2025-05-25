@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-import "./home/home.css"; // use your shared stylesheet
+import childlogo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
+import "./home/home.css"; 
 import Home from "./home/home";
 import newvid from "../assets/neurologo.gif";
 
@@ -73,6 +74,7 @@ const Layout = ({ children }) => {
 
       {/* Page Content */}
       <main>{children}</main>
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
@@ -82,7 +84,6 @@ const Layout = ({ children }) => {
               from medical scans. Empowering health through AI.
             </p>
           </div>
-
           <div className="footer-section links">
             <h4>Quick Links</h4>
             <ul>
@@ -90,20 +91,19 @@ const Layout = ({ children }) => {
                 <a href="/home">Home</a>
               </li>
               <li>
-                <a href="/home">About</a>
+                <a href="#about">About</a>
               </li>
               <li>
-                <a href="/home">Contact</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
           </div>
-
           <div className="footer-section team">
             <h4>Team</h4>
             <ul>
               <li>
                 <a
-                  href="https://github.com/hafsa"
+                  href="https://github.com/hafsaahabib"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
               </li>
               <li>
                 <a
-                  href="https://github.com/malaika"
+                  href="https://github.com/malaika-s27"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -121,7 +121,7 @@ const Layout = ({ children }) => {
               </li>
               <li>
                 <a
-                  href="https://github.com/aqsa"
+                  href="https://github.com/AqsaSyed01"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -130,7 +130,6 @@ const Layout = ({ children }) => {
               </li>
             </ul>
           </div>
-
           <div className="footer-section contact">
             <h4>Contact Us</h4>
             <ul>
@@ -138,12 +137,12 @@ const Layout = ({ children }) => {
                 <i className="fas fa-envelope"></i> info@neuroscan.ai
               </li>
               <li>
-                <i className="fas fa-map-marker-alt"></i> Lahore, Pakistan
+                <i className="fas fa-map-marker-alt"></i> Islamabad, Pakistan
               </li>
               <li>
                 <i className="fab fa-github"></i>{" "}
                 <a
-                  href="https://github.com/neuroscan"
+                  href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -153,9 +152,15 @@ const Layout = ({ children }) => {
             </ul>
           </div>
         </div>
-
         <div className="footer-bottom">
-          <p>© 2025 NeuroScan – All rights reserved.</p>
+          <p>
+            © NeuroScan powered by{" "}
+            <img
+              src={childlogo}
+              alt="Powered by Logo"
+              className="powered-by-logo"
+            />
+          </p>
         </div>
       </footer>
       {showModal && <InfoModal onClose={() => setShowModal(false)} />}
