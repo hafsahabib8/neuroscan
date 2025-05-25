@@ -155,10 +155,16 @@ body::before {
     to { filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6)); }
 }
 
+
 /* Navbar */
-.navbar {
+.navbar1 {
     position: relative;
     z-index: 100;
+    background: transparent;
+}
+
+.navbar1:hover{
+    background: transparent;
 }
 
 .hamburger-icon {
