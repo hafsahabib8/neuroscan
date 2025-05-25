@@ -187,7 +187,7 @@ const DeveloperDashboard = () => {
             ? 'Brain Tumor Segmentation Model'
             : 'Secondary Segmentation Model'}
         </h1>
-        <div className="navbar">
+        <div className="navbar1">
           <div className="hamburger-icon" onClick={toggleMenu}>
             <div className="hamburger-bar"></div>
             <div className="hamburger-bar"></div>
