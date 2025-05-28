@@ -7,6 +7,7 @@ import RoleSelection from "./components/Signup/RoleSelection";
 import Signup from "./components/Signup/Signup";
 import Dashboard from "./components/dashboard/Dashboard";
 import UploadThroughPacs from "./components/upload/UploadThroughPacs";
+import ResetPasswordForm from "./components/ResetPasswordForm";
 import DeveloperDashboard from "./components/DeveloperDashboard/DevelopeDashboard";
 import SegmentationApp from "./components/upload/SegmentationApp";
 import InfoModal from "./components/infopage/info";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/reset-password" element={<ResetPasswordForm />} />
         <Route path="/roleselect" element={<RoleSelection />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/segmentation" element={<SegmentationApp />} />
