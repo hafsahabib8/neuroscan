@@ -961,7 +961,7 @@ body {
   }
   
   .logo {
-    font-size: 1.6rem;
+    display: none;  
   }
   
   .nav-links {
@@ -1004,7 +1004,6 @@ body {
   }
   
   .about-section, .contact-section {
-    padding: 3rem 0.75rem;
     width: 100%;
     max-width: 100vw;
   }
