@@ -284,6 +284,10 @@ body {
   transform: translateY(-2px) scale(0.98);
 }
 
+.upload-button:hover {
+  color: white;
+}
+
 /* Specialized PACS button styling */
 .pacs-button {
   background: linear-gradient(135deg, rgba(245, 87, 108, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
